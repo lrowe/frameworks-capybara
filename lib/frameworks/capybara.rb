@@ -3,6 +3,7 @@ require 'monkey-patches/webdriver-patches'
 require 'monkey-patches/capybara-patches'
 require 'monkey-patches/capybara-mechanize-patches'
 require 'monkey-patches/mechanize-patches'
+require 'monkey-patches/net-http-persistent-patches'
 require 'monkey-patches/send-keys'
 require 'selenium-webdriver'
 require 'capybara/mechanize/cucumber' 
@@ -124,8 +125,8 @@ class CapybaraSetup
     Capybara.register_driver :mechanize do |app|
       Capybara.app_host = "http://www.int.bbc.co.uk"
       driver = Capybara::Mechanize::Driver.new(app)
-      driver.browser.agent.set_proxy(@proxy_host, 80) unless opts[:proxy].nil?
       driver.browser.agent.set_ssl_client_certification(ENV['CERT_LOCATION'], ENV['CERT_LOCATION'], ENV['CA_CERT_LOCATION']) if ENV['CERT_LOCATION']
+      driver.browser.agent.set_proxy(@proxy_host, 80) unless opts[:proxy].nil?
       driver 
     end
     :mechanize
