@@ -6,7 +6,7 @@ require 'monkey-patches/mechanize-patches'
 require 'monkey-patches/net-http-persistent-patches'
 require 'monkey-patches/send-keys'
 require 'selenium-webdriver'
-require 'capybara/mechanize/cucumber' 
+require 'mechwarrior'
 
 class CapybaraSetup
 

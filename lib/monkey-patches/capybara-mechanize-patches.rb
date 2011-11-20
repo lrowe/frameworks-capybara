@@ -1,6 +1,6 @@
-require 'capybara/mechanize/cucumber' 
-require 'uri'
-
+#require 'capybara/mechanize/cucumber' 
+#require 'uri'
+=begin
 class Capybara::Mechanize::Driver
 
   #With Capybara 1.x Capybara::Mechanize now just uses the reset! method in
@@ -63,3 +63,4 @@ class Capybara::Mechanize::Driver
     browser.agent.cookie_jar.add(FakeURI.new(c.domain),c)
   end
 end
+=end
