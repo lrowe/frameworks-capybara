@@ -125,7 +125,8 @@ class CapybaraSetup
     Capybara.register_driver :mechanize do |app|
       Capybara.app_host = "http://www.int.bbc.co.uk"
       driver = Capybara::Mechanize::Driver.new(app)
-      driver.browser.agent.set_ssl_client_certification(ENV['CERT_LOCATION'], ENV['CERT_LOCATION'], ENV['CA_CERT_LOCATION']) if ENV['CERT_LOCATION']
+      driver.browser.agent.cert, driver.browser.agent.key = ENV['CERT_LOCATION'], ENV['CERT_LOCATION']
+      driver.browser.agent.ca_file = ENV['CA_CERT_LOCATION'] 
       driver.browser.agent.set_proxy(@proxy_host, 80) unless opts[:proxy].nil?
       driver 
     end

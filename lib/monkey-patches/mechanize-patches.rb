@@ -1,3 +1,4 @@
+=begin
 require 'mechanize'
 class Mechanize
   def set_ssl_client_certification(clientcert, clientkey, cacert)
@@ -65,3 +66,4 @@ class Mechanize::CookieJar
     cookie
   end
 end
+=end
