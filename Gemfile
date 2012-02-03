@@ -11,8 +11,9 @@ group :development do
   gem "jeweler", "~> 1.5.2"
   gem "rcov", ">= 0"
   gem "rspec", ">= 0"
-  gem "capybara", "< 1.0.0"
-  gem "capybara-mechanize", ">=0"
+  gem "capybara", "> 1.0.0"
+  gem "capybara-celerity"
+  gem "mechwarrior", :path => "../mechwarrior"
   gem "cucumber", ">= 0"
   gem "selenium-webdriver", ">= 0"
 end

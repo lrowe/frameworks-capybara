@@ -85,7 +85,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :firefox
         end
 
@@ -101,7 +101,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :firefox
           Capybara.current_session.driver.options[:profile].should be_a_kind_of Selenium::WebDriver::Firefox::Profile
           Capybara.current_session.driver.options[:profile].instance_variable_get(:@model).should include "default"
@@ -121,7 +121,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :firefox
           Capybara.current_session.driver.options[:profile].should be_a_kind_of Selenium::WebDriver::Firefox::Profile
           Capybara.current_session.driver.options[:profile].instance_variable_get(:@additional_prefs)['network.proxy.type'].should == '1'
@@ -143,7 +143,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :chrome
           Capybara.current_session.driver.options[:switches].should == ['--user-agent=Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10']
         end
@@ -162,7 +162,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :remote
           Capybara.current_session.driver.options[:url].should == 'http://example.com'
           Capybara.current_session.driver.options[:http_client].should be_a_kind_of Selenium::WebDriver::Remote::Http::Default 
@@ -187,7 +187,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :remote
           Capybara.current_session.driver.options[:url].should == 'http://example.com'
           Capybara.current_session.driver.options[:http_client].should be_a_kind_of Selenium::WebDriver::Remote::Http::Default 
@@ -210,7 +210,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :remote
           Capybara.current_session.driver.options[:desired_capabilities].instance_variable_get(:@capabilities)[:firefox_profile].should be_a_kind_of Selenium::WebDriver::Firefox::Profile
           Capybara.current_session.driver.options[:desired_capabilities].instance_variable_get(:@capabilities)[:firefox_profile].instance_variable_get(:@additional_prefs)['network.proxy.type'].should == '1'
@@ -238,7 +238,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :remote
           Capybara.current_session.driver.options[:url].should == 'http://saucelabs.com'
           Capybara.current_session.driver.options[:http_client].should be_a_kind_of Selenium::WebDriver::Remote::Http::Default 
@@ -266,7 +266,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :remote
           Capybara.current_session.driver.options[:switches].should == nil
           Capybara.current_session.driver.options[:url].should == 'http://saucelabs.com'
@@ -293,7 +293,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :selenium
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Selenium
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Selenium::Driver
           Capybara.current_session.driver.options[:browser].should == :remote
           Capybara.current_session.driver.options[:url].should == 'http://saucelabs.com'
           Capybara.current_session.driver.options[:http_client].should be_a_kind_of Selenium::WebDriver::Remote::Http::Default 
@@ -320,7 +320,7 @@ describe CapybaraSetup do
         it "should be initialized correctly" do 
           Capybara.delete_session
           CapybaraSetup.new.driver.should == :mechanize
-          Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Mechanize
+          Capybara.current_session.driver.should be_a_kind_of Capybara::Mechanize::Driver
         end
         context "with maximal Mechanize driver" do
           before do
@@ -332,9 +332,9 @@ describe CapybaraSetup do
           it "should be initialized correctly" do
             Capybara.delete_session
             CapybaraSetup.new.driver.should == :mechanize
-            Capybara.current_session.driver.should be_a_kind_of Capybara::Driver::Mechanize
-            Capybara.current_session.driver.agent.proxy_addr.should == 'example.cache.co.uk'
-            Capybara.current_session.driver.agent.proxy_port.should == 80
+            Capybara.current_session.driver.should be_a_kind_of Capybara::Mechanize::Driver
+            Capybara.current_session.driver.browser.agent.proxy_addr.should == 'example.cache.co.uk'
+            Capybara.current_session.driver.browser.agent.proxy_port.should == 80
           end
         end
       end

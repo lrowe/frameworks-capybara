@@ -36,6 +36,8 @@ The following environment variables can be set to configure your tests:
   FIREFOX_PROFILE - specify a firefox profile to use when running in-browser tests (local or remote)
   CELERITY_JS_ENABLED (string - 'true', 'false') - determines whether Celerity (HTMLUnit) attempts to execute javascript 
   XVFB - (string - 'true', 'false') - determines whether XVFB is used to run browser (i.e. headless Firefox on *nix platform)
+  FW_CERT_LOCATION - path to client certificate (combined pem)
+  CHROME_SWITCHES - pass in any allowed switches for the Selenium chrome driver (http://peter.sh/experiments/chromium-command-line-switches/) e.g. CHROME_SWITCHES="--user-agent=Mozilla/5.0 (PLAYSTATION 3; 3.55)"
 
 Here is a sample cucumber.yml:
 
@@ -69,6 +71,12 @@ This gem also sets up a number of 'base urls' for you to use in your tests, thes
   @base_open_url
 
 Finally this gem contains some useful monkey-patches to core libraries e.g. Capybara, Selenium-Webdriver and Cucumber.
+
+== Release instructions
+
+* Run tests - 'rake'
+* Bump version - e.g. 'rake version:bump:patch'
+* Release - 'rake release'
 
 == Contributing to frameworks-capybara
  

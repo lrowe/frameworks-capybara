@@ -7,6 +7,7 @@ require 'monkey-patches/net-http-persistent-patches'
 require 'monkey-patches/send-keys'
 require 'selenium-webdriver'
 require 'mechwarrior'
+require 'capybara/celerity'
 
 class CapybaraSetup
 
@@ -80,7 +81,7 @@ class CapybaraSetup
         opts[:http_client] = client
       end
       clean_opts(opts, :proxy, :proxy_on)
-      Capybara::Driver::Selenium.new(app,opts)
+      Capybara::Selenium::Driver.new(app,opts)
     end   
     :selenium
   end
