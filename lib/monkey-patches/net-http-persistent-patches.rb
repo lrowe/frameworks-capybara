@@ -5,6 +5,7 @@ class Net::HTTP::Persistent
   def connection_for uri
     Thread.current[@connection_key] ||= {}
     Thread.current[@request_key]    ||= Hash.new 0
+    Thread.current[@timeout_key]    ||= Hash.new EPOCH
 
     connections = Thread.current[@connection_key]
 
@@ -17,10 +18,15 @@ class Net::HTTP::Persistent
       net_http_args.concat @proxy_args
     end
 
+    connection = connections[connection_id]
+
     unless connection = connections[connection_id] then
-      connections[connection_id] = Net::HTTP.new(*net_http_args)
+      connections[connection_id] = http_class.new(*net_http_args)
       connection = connections[connection_id]
       ssl connection if uri.scheme.downcase == 'https'
+    else
+      last_used = Thread.current[@timeout_key][connection.object_id]
+      reset connection unless last_used > max_age
     end
 
     unless connection.started? then

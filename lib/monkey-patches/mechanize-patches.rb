@@ -1,10 +1,17 @@
-=begin
 require 'mechanize'
-class Mechanize
-  def set_ssl_client_certification(clientcert, clientkey, cacert)
-    @agent.cert, @agent.key = clientcert, clientkey
-    @agent.ca_file = cacert if cacert
+#This patch is required Mechanize runs the clear before each new request
+#and not after each response, operationaly this is fine, but because
+#we check after response and it may be the last response we need it to clear here.
+class Mechanize::CookieJar
+  alias_method :old_add, :add
+  def add(uri, cookie)
+    cleanup
+    old_add(uri, cookie)
   end
+end
+#This patch may still be required, think it is only not needed now because we don't run
+#full facebook journey, only mock in idtests
+=begin
 # Fetches the URL passed in and returns a page.
   def get(uri, parameters = [], referer = nil, headers = {})
     method = :get
@@ -47,23 +54,5 @@ class Mechanize
     page
   end
 
-end
-
-#This patch disables the validity checking done by Mechanize2 against Cookies
-#It attempts to validate using RFC2965 - and our cookies fail by these rules.
-#NOTE - Most 'normal' browsers don't seem to care
-class Mechanize::CookieJar
-  def add(uri, cookie)
-    #return unless valid_cookie_for_uri?(uri, cookie)
-
-    normal_domain = cookie.domain.downcase
-
-    @jar[normal_domain] ||= {} unless @jar.has_key?(normal_domain)
-
-    @jar[normal_domain][cookie.path] ||= {}
-    @jar[normal_domain][cookie.path][cookie.name] = cookie
-
-    cookie
-  end
 end
 =end

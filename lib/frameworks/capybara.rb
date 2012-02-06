@@ -129,6 +129,7 @@ class CapybaraSetup
       driver.browser.agent.cert, driver.browser.agent.key = ENV['CERT_LOCATION'], ENV['CERT_LOCATION']
       driver.browser.agent.ca_file = ENV['CA_CERT_LOCATION'] 
       driver.browser.agent.set_proxy(@proxy_host, 80) unless opts[:proxy].nil?
+      driver.browser.agent.agent.http.reuse_ssl_sessions=false #patch for https://github.com/drbrain/net-http-persistent/issues/15
       driver 
     end
     :mechanize

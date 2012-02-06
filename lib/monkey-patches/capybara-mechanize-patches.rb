@@ -1,16 +1,15 @@
-#require 'capybara/mechanize/cucumber' 
-#require 'uri'
-=begin
+require 'capybara/mechanize' 
+require 'uri'
 class Capybara::Mechanize::Driver
 
   #With Capybara 1.x Capybara::Mechanize now just uses the reset! method in
   #Capybara::RackTest::Driver which simply blats the @browser.  This is kind of
   #ok as we don't have the overhead of opening a real browser.  However this means
   #that our global settings e.g. proxy, ssl get blatted as well.
-  def reset!
-    browser.agent.cookie_jar.clear!
-    browser.reset_host!
-  end
+  #def reset!
+  #  browser.agent.cookie_jar.clear!
+  #  browser.reset_host!
+  #end
 
   #Patch in cookie handling support for mechanize via Capybara::Mechanize
   def cookies
@@ -63,4 +62,3 @@ class Capybara::Mechanize::Driver
     browser.agent.cookie_jar.add(FakeURI.new(c.domain),c)
   end
 end
-=end
